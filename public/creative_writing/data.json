@@ -1,0 +1,22 @@
+{
+    "Stories" : [
+        {
+            "title" : "Letter of Recommendation: The 1,500 Year Old Game",
+            "date" : "February 12, 2025",
+            "Description" : "A letter of recommendation for chess, a game that has brought me joy and education.",
+            "file" : "lor.md"
+        },
+        {
+            "title" : "Complaint Box: I like a *lot* of things, not this.",
+            "date" : "March 6, 2025",
+            "Description" : "A humorous critique of parking lot chaos and the absurdities of human behavior.",
+            "file" : "complaint_box.md"
+        },
+        {
+            "title" : "Fishing Ephinoy",
+            "date" : "April 1, 2025",
+            "Description" : "A reflection on the calming and restorative power of fishing amidst life's busyness.",
+            "file" : "fishing_ephinoy.md"
+        }
+    ]
+}
