@@ -18,7 +18,7 @@ interface Story {
   file: string;
 }
 
-interface StoryPageProps { params: { id: string } }
+type Props = { params: { id: string } };
 
 export async function generateStaticParams() {
   const dataPath = path.join(process.cwd(), 'public', 'creativewriting', 'data.json');
@@ -27,7 +27,7 @@ export async function generateStaticParams() {
   return data.Stories.map((_: unknown, index: number) => ({ id: index.toString() }));
 }
 
-export async function generateMetadata({ params }: StoryPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dataPath = path.join(process.cwd(), 'public', 'creativewriting', 'data.json');
   const data: { Stories: Story[] } = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: StoryPageProps): Promise<Meta
   return { title: story.title };
 }
 
-export default function CreativeWritingPage({ params }: StoryPageProps) {
+export default function CreativeWritingPage({ params }: Props) {
   const { id } = params;
   const dataPath = path.join(process.cwd(), 'public', 'creativewriting', 'data.json');
   const data: { Stories: Story[] } = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
