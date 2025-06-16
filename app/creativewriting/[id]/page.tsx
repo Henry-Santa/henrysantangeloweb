@@ -25,7 +25,7 @@ export async function generateStaticParams() {
   return data.Stories.map((_: unknown, index: number) => ({ id: index.toString() }));
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: any): Promise<Metadata> {
   const dataPath = path.join(process.cwd(), 'public', 'creativewriting', 'data.json');
   const data: { Stories: Story[] } = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   return { title: story.title };
 }
 
-export default async function CreativeWritingPage({ params }: { params: { id: string } }) {
+export default function CreativeWritingPage({ params }: { params: { id: string } }) {
   const { id } = params;
   const dataPath = path.join(process.cwd(), 'public', 'creativewriting', 'data.json');
   const data: { Stories: Story[] } = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
