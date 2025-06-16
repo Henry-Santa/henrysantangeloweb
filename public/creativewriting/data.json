@@ -17,6 +17,24 @@
             "date" : "April 1, 2025",
             "Description" : "A reflection on the calming and restorative power of fishing amidst life's busyness.",
             "file" : "fishing_ephinoy.md"
+        },
+        {
+            "title" : "Charlie B",
+            "date" : "May 20, 2025",
+            "Description" : "An unexpected lakeside encounter with Charlie B, the self-proclaimed greatest philosopher, unfolds into a whimsical life lesson.",
+            "file" : "charlie_b.md"
+        },
+        {
+            "title" : "The Circus",
+            "date" : "April 15, 2025",
+            "Description" : "A whimsical account of the chaos of teaching kids to code. It's not about the code, it's about the kids.",
+            "file" : "circus.md"
+        },
+        {
+            "title" : "Those Chatters",
+            "date" : "May 29, 2025",
+            "Description" : "Amid relentless classroom chatter, a student questions the performative rat-race of modern schooling.",
+            "file" : "those_chatter.md"
         }
     ]
 }

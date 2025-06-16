@@ -1,61 +1,93 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaBars } from 'react-icons/fa';
+import { usePathname } from 'next/navigation';
+
+/**
+ * RootLayoutWithSidebar – ocean-palette v2
+ */
 
 export default function RootLayoutWithSidebar({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Ensure legacy dark-mode class is removed
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const navItems = [
+    { href: '/', label: 'Home', accent: 'bg-saffron-500' },
+    { href: '/creativewriting', label: 'Creative Writing', accent: 'bg-keppel-500' },
+    { href: 'https://github.com/henry-santa', label: 'GitHub', accent: 'bg-onyx-500', external: true },
+    { href: '/junior-thesis', label: 'Junior Thesis', accent: 'bg-saffron-500' }
+  ];
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-100 to-blue-100">
+    <div className="flex min-h-screen bg-platinum text-onyx-500">
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full z-30 flex flex-col items-center bg-white/95 backdrop-blur-md shadow-2xl border-r border-gray-200 transition-transform duration-300 md:static md:translate-x-0 md:w-60 w-60 ${
+        className={`fixed top-0 left-0 h-screen md:h-auto z-30 flex flex-col justify-between items-center bg-timberwolf shadow-xl border-r border-onyx-400 transition-transform duration-300 md:static md:translate-x-0 md:w-64 w-64 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        } animate-slideInLeft`}
       >
+        {/* Close button (mobile) */}
         <button
           onClick={() => setIsSidebarOpen(false)}
-          className="md:hidden mt-4 mb-8 p-2 rounded-full hover:bg-gray-200 transition self-end mr-4"
+          className="md:hidden mt-4 mb-4 p-2 rounded-full hover:bg-timberwolf-300 transition self-end mr-4"
           aria-label="Close sidebar"
         >
           ✕
         </button>
+
         <div className="flex flex-col items-center w-full px-4">
-          <div className="mb-8 mt-6 w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg">
-            <span className="text-white text-2xl font-bold select-none">HS</span>
+          {/* Avatar */}
+          <div className="mb-8 mt-6">
+            <Image src="/pfp.png" alt="Profile" width={80} height={80} className="rounded-full shadow-md" />
           </div>
-          <h2 className="text-lg font-semibold mb-8 tracking-wide text-gray-800">Menu</h2>
+
+          {/* Navigation */}
           <nav className="flex flex-col gap-2 w-full">
-            <Link href="/creativewriting" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-100 text-gray-700 font-medium transition">
-              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full"></span>
-              Creative Writing
-            </Link>
-            <Link href="https://github.com" target="_blank" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-100 text-gray-700 font-medium transition">
-              <span className="inline-block w-2 h-2 bg-gray-500 rounded-full"></span>
-              GitHub
-            </Link>
-            <Link href="/junior-thesis" className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-100 text-gray-700 font-medium transition">
-              <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
-              Junior Thesis
-            </Link>
+            {navItems.map(({ href, label, accent, external }) => {
+              const isActive = pathname === href;
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  target={external ? '_blank' : undefined}
+                  className={`${isActive ? 'bg-keppel-100 font-semibold text-keppel-700' : 'text-onyx-700'} flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-timberwolf-300 transition`}
+                >
+                  <span className={`inline-block w-2 h-2 rounded-full ${accent}`}></span>
+                  {label}
+                </Link>
+              );
+            })}
           </nav>
+
+          {/* Footer */}
+          <div className="mt-10 mb-6 text-xs text-onyx-600">© Henry Santangelo</div>
         </div>
       </aside>
-      {/* Open Sidebar Button */}
+
+      {/* Open button (mobile) */}
       {!isSidebarOpen && (
         <button
           onClick={() => setIsSidebarOpen(true)}
-          className="fixed top-4 left-4 z-40 p-2 bg-white/90 text-gray-800 rounded-full shadow hover:bg-blue-500 hover:text-white transition border border-gray-300 md:hidden"
+          className="fixed top-4 left-4 z-40 p-2 bg-timberwolf text-onyx-700 rounded-full shadow hover:bg-timberwolf-300 transition border border-onyx-400 md:hidden"
           aria-label="Open sidebar"
         >
           <FaBars size={22} />
         </button>
       )}
-      {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center ml-0 md:ml-60 transition-all duration-300 py-8 px-2">
-        {children}
+
+      {/* Main */}
+      <main className="flex-1 py-10 px-4 md:px-8 overflow-x-auto flex flex-col items-center">
+        <div className="w-full max-w-7xl mx-auto">{children}</div>
       </main>
     </div>
   );
