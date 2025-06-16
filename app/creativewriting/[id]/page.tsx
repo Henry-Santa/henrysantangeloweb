@@ -18,7 +18,12 @@ interface Story {
   file: string;
 }
 
-type Props = { params: { id: string } };
+// Using loose typing here because Next.js 15 wraps `params` in a Promise during
+// the type-checking phase (see https://github.com/vercel/next.js/discussions/71997).
+// Narrowing it causes a constraint mismatch, so we intentionally relax it and
+// silence the explicit-any rule.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Props = { params: any };
 
 export async function generateStaticParams() {
   const dataPath = path.join(process.cwd(), 'public', 'creativewriting', 'data.json');
@@ -27,11 +32,12 @@ export async function generateStaticParams() {
   return data.Stories.map((_: unknown, index: number) => ({ id: index.toString() }));
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dataPath = path.join(process.cwd(), 'public', 'creativewriting', 'data.json');
   const data: { Stories: Story[] } = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
-  const { id } = params;
+  const { id } = await params;
   const storyIndex = parseInt(id, 10);
   const story = data.Stories[storyIndex];
 
@@ -42,8 +48,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: story.title };
 }
 
-export default function CreativeWritingPage({ params }: Props) {
-  const { id } = params;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function CreativeWritingPage({ params }: Props) {
+  const { id } = await params;
   const dataPath = path.join(process.cwd(), 'public', 'creativewriting', 'data.json');
   const data: { Stories: Story[] } = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
