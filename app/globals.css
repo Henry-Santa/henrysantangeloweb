@@ -24,3 +24,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer base {
+  p {
+    padding: 1rem 0;
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    text-align: justify;
+    margin: 0 2rem;
+  }
+
+  .story-container {
+    background-color: #282828;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
