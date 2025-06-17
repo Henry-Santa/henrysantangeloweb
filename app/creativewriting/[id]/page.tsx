@@ -75,11 +75,11 @@ export default async function CreativeWritingPage({ params }: Props) {
 
   return (
     <RootLayoutWithSidebar>
-      <div className="w-full max-w-6xl mx-auto mt-16 bg-white/95 backdrop-blur-md border border-onyx-400 rounded-2xl shadow-2xl p-16 relative animate-fadeIn">
+      <div className="w-full max-w-6xl mx-auto mt-12 bg-white/95 backdrop-blur-md border border-onyx-400 rounded-2xl shadow-2xl p-6 md:p-12 lg:p-16 relative animate-fadeIn">
         <Link href="/creativewriting" className="absolute -top-8 left-0 flex items-center gap-2 text-blue-800 hover:underline">
           <FaArrowLeft /> Back
         </Link>
-        <h1 className="text-5xl font-extrabold mb-6 text-keppel-700 font-serif leading-tight text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 md:mb-6 text-keppel-700 font-serif leading-tight text-center">
           {story.title}
         </h1>
         <p className="text-onyx-600 italic mb-10 text-sm text-center">{story.date}</p>
