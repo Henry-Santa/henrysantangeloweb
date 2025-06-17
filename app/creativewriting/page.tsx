@@ -28,7 +28,7 @@ export default function CreativeWritingIndex() {
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {data.Stories.map((story: Story, index: number) => (
             <Link key={index} href={`/creativewriting/${index}`} className="group">
-              <div className="bg-white border border-onyx-400 rounded-2xl shadow-md p-8 flex flex-col gap-3 transform transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+              <div className="bg-white border border-onyx-400 rounded-2xl shadow-md p-4 flex flex-col gap-3 transform transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
                 <h2 className="text-lg font-bold text-onyx-700 group-hover:underline leading-tight font-serif line-clamp-2">
                   {story.title}
                 </h2>

@@ -11,10 +11,14 @@ interface Story {
 }
 
 interface Repo {
+  author: string;
   name: string;
-  html_url: string;
   description: string;
-  stargazers_count: number;
+  language: string;
+  languageColor: string;
+  stars: number;
+  forks: number;
+  html_url?: string;
 }
 
 /**
@@ -31,14 +35,14 @@ export default async function HomePage() {
   const { Stories }: { Stories: Story[] } = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
   const latestStories = Stories.slice(0, 3);
 
-  // 2) Fetch GitHub repos (revalidate every hour).
-  const repoRes = await fetch('https://api.github.com/users/henry-santa/repos?per_page=100', {
+  // Fetch pinned repositories (revalidate every hour).
+  const repoRes = await fetch('https://pinned.berrysauce.dev/get/henry-santa', {
     next: { revalidate: 3600 }
   });
   let repos: Repo[] = [];
   if (repoRes.ok) {
     const all = (await repoRes.json()) as Repo[];
-    repos = all.sort((a,b)=>b.stargazers_count - a.stargazers_count).slice(0,3);
+    repos = all.slice(0,3).map(r => ({ ...r, html_url: `https://github.com/${r.author}/${r.name}` }));
   }
 
   return (
@@ -97,7 +101,13 @@ export default async function HomePage() {
               <p className="text-gray-600 text-sm mb-3 line-clamp-3 min-h-[48px]">
                 {repo.description ?? 'No description'}
               </p>
-              <span className="text-xs text-gray-500">★ {repo.stargazers_count}</span>
+              <div className="flex items-center justify-between text-xs text-gray-500">
+                <div className="flex items-center gap-1">
+                  <span className="inline-block w-2 h-2 rounded-full" style={{ backgroundColor: repo.languageColor }} />
+                  <span>{repo.language ?? 'N/A'}</span>
+                </div>
+                <span>★ {repo.stars}</span>
+              </div>
             </a>
           ))}
         </div>

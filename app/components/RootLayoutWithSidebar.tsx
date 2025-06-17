@@ -25,14 +25,14 @@ export default function RootLayoutWithSidebar({ children }: { children: React.Re
     { href: '/', label: 'Home', accent: 'bg-saffron-500' },
     { href: '/creativewriting', label: 'Creative Writing', accent: 'bg-keppel-500' },
     { href: 'https://github.com/henry-santa', label: 'GitHub', accent: 'bg-onyx-500', external: true },
-    { href: '/junior-thesis', label: 'Junior Thesis', accent: 'bg-saffron-500' }
+    { href: '/Junior-Thesis.pdf', label: 'Junior Thesis', accent: 'bg-saffron-500' }
   ];
 
   return (
     <div className="flex min-h-screen bg-platinum text-onyx-500">
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen md:h-auto z-30 flex flex-col justify-between items-center bg-timberwolf shadow-xl border-r border-onyx-400 transition-transform duration-300 md:static md:translate-x-0 md:w-64 w-64 ${
+        className={`fixed top-0 left-0 h-screen md:h-auto z-30 flex flex-col justify-start md:justify-between items-center bg-timberwolf-500 shadow-xl border-r border-onyx-400 transition-transform duration-300 md:static md:translate-x-0 md:w-64 w-64 bg-white ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } animate-slideInLeft`}
       >
@@ -45,7 +45,7 @@ export default function RootLayoutWithSidebar({ children }: { children: React.Re
           ✕
         </button>
 
-        <div className="flex flex-col items-center w-full px-4">
+        <div className="flex flex-col items-center w-full px-4 pt-6 gap-6">
           {/* Avatar */}
           <div className="mb-8 mt-6">
             <Image src="/pfp.png" alt="Profile" width={80} height={80} className="rounded-full shadow-md" />
@@ -70,7 +70,7 @@ export default function RootLayoutWithSidebar({ children }: { children: React.Re
           </nav>
 
           {/* Footer */}
-          <div className="mt-10 mb-6 text-xs text-onyx-600">© Henry Santangelo</div>
+          <div className="mt-10 mb-6 text-xs text-onyx-600">Henry Santangelo</div>
         </div>
       </aside>
 
@@ -78,7 +78,7 @@ export default function RootLayoutWithSidebar({ children }: { children: React.Re
       {!isSidebarOpen && (
         <button
           onClick={() => setIsSidebarOpen(true)}
-          className="fixed top-4 left-4 z-40 p-2 bg-timberwolf text-onyx-700 rounded-full shadow hover:bg-timberwolf-300 transition border border-onyx-400 md:hidden"
+          className="fixed top-4 left-4 z-40 p-2 bg-keppel-500 text-white rounded-full shadow-lg hover:bg-keppel-600 transition md:hidden"
           aria-label="Open sidebar"
         >
           <FaBars size={22} />
