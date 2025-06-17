@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Henry Santangelo – Personal Site
 
-## Getting Started
 
-First, run the development server:
+## Content
+
+* Creative writing library (short stories & essays)
+* Section with Henry Santangelo's pinned GitHub projects
+
+---
+
+## Local dev
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm ci
+npm run dev   # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production build:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build && npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Deploy to Amplify
 
-To learn more about Next.js, take a look at the following resources:
+1. Connect repository.
+2. Use these commands:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```yaml
+   preBuild: { commands: ["npm ci"] }
+   build:    { commands: ["npm run build"] }
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Select "Next.js (SSR)" hosting.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/
+  layout.tsx           # global layout + metadata
+  page.tsx             # home
+  creativewriting/
+    page.tsx           # story index
+    [id]/page.tsx      # story reader
+public/creativewriting # markdown files + data.json
+app/components/*       # shared UI
+```
+
+---
+
+## License
+
+MIT © Henry Santangelo
