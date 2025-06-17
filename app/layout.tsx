@@ -49,8 +49,16 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Henry Santangelo – Writer & Developer',
-    description: 'Henry Santangelo is a writer and developer.',
+    description: 'Official portfolio of Henry Santangelo',
     images: ['/pfp.png']
+  },
+  icons: {
+    icon: '/favicon/favicon.ico',
+    shortcut: '/favicon/favicon-32x32.png',
+    apple: '/favicon/apple-touch-icon.png',
+    other: [
+      { rel: 'manifest', url: '/favicon/site.webmanifest' }
+    ]
   }
 };
 
