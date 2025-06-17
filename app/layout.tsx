@@ -32,7 +32,7 @@ export const metadata = {
   authors: [{ name: 'Henry Santangelo', url: 'https://henrysantangelo.com' }],
   openGraph: {
     title: 'Henry Santangelo – Writer & Developer',
-    description: 'Explore the stories, code projects and musings of Henry Santangelo.',
+    description: 'The stories and code projects of Henry Santangelo.',
     url: 'https://henrysantangelo.com',
     siteName: 'Henry Santangelo',
     images: [
