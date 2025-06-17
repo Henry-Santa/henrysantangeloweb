@@ -12,8 +12,46 @@ import { Nunito } from 'next/font/google';
 const nunito = Nunito({ subsets: ['latin'], weight: ['400','500','600','700'] });
 
 export const metadata = {
-  title: 'Henry Santangelo',
-  description: 'Personal website for creative writing, projects, and more.'
+  metadataBase: new URL('https://henrysantangelo.com'),
+  title: {
+    template: '%s | Henry Santangelo',
+    default: 'Henry Santangelo – Writer & Developer'
+  },
+  description: 'Portfolio and creative works of Henry Santangelo – author, developer, and lifelong learner.',
+  keywords: [
+    'Henry Santangelo',
+    'Santangelo writing',
+    'Henry Santangelo developer',
+    'creative writing',
+    'web projects',
+    'personal blog',
+    'github',
+    'Santangelo Henry',
+    'Santangelo'
+  ],
+  authors: [{ name: 'Henry Santangelo', url: 'https://henrysantangelo.com' }],
+  openGraph: {
+    title: 'Henry Santangelo – Writer & Developer',
+    description: 'Explore the stories, code projects and musings of Henry Santangelo.',
+    url: 'https://henrysantangelo.com',
+    siteName: 'Henry Santangelo',
+    images: [
+      {
+        url: '/pfp.png',
+        width: 800,
+        height: 800,
+        alt: 'Henry Santangelo profile picture'
+      }
+    ],
+    locale: 'en_US',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Henry Santangelo – Writer & Developer',
+    description: 'Henry Santangelo is a writer and developer.',
+    images: ['/pfp.png']
+  }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -25,6 +63,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         Inter font class so that the font is eagerly loaded by Next.js.
       */}
       <body className={`${nunito.className} bg-[var(--background)] text-[var(--foreground)]`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Henry Santangelo',
+              url: 'https://henrysantangelo.com',
+              sameAs: ['https://github.com/henry-santa']
+            })
+          }}
+        />
         {children}
       </body>
     </html>
