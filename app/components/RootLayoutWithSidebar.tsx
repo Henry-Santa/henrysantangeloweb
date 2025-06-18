@@ -25,7 +25,8 @@ export default function RootLayoutWithSidebar({ children }: { children: React.Re
     { href: '/', label: 'Home', accent: 'bg-saffron-500' },
     { href: '/creativewriting', label: 'Creative Writing', accent: 'bg-keppel-500' },
     { href: 'https://github.com/henry-santa', label: 'GitHub', accent: 'bg-onyx-500', external: true },
-    { href: '/Junior-Thesis.pdf', label: 'Junior Thesis', accent: 'bg-saffron-500' }
+    { href: '/Junior-Thesis.pdf', label: 'Junior Thesis', accent: 'bg-saffron-500' },
+    { href: 'https://www.linkedin.com/in/henry-santangelo-b2426b2aa/', label: 'LinkedIn', accent: 'bg-saffron-500' },
   ];
 
   return (
