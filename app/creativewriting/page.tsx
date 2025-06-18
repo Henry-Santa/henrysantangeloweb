@@ -25,6 +25,7 @@ export default function CreativeWritingIndex() {
     <RootLayoutWithSidebar>
       <div className="w-full max-w-7xl mx-auto py-12 px-4 animate-fadeIn">
         <h1 className="text-5xl font-extrabold mb-12 text-center text-keppel-600 drop-shadow">Creative Writing</h1>
+        <h2 className="text-center text-onyx-700 font-serif leading-relaxed text-lg line-clamp-3 mb-12">I never really liked writing until very recently. Mr. Donahue's Creative Writing class really changed that. It was an escape from the structure of academic essays and a way to express myself.</h2>
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {data.Stories.map((story: Story, index: number) => (
             <Link key={index} href={`/creativewriting/${index}`} className="group">

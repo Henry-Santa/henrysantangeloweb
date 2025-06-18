@@ -70,7 +70,7 @@ export default function RootLayoutWithSidebar({ children }: { children: React.Re
           </nav>
 
           {/* Footer */}
-          <div className="mt-10 mb-6 text-xs text-onyx-600">Henry Santangelo</div>
+          <div className="mt-10 mb-6 text-xs text-onyx-600 flex justify-center w-full ">Henry Santangelo</div>
         </div>
       </aside>
 
