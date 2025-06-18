@@ -51,8 +51,7 @@ export default async function HomePage() {
       <section className="text-center max-w-4xl mx-auto animate-fadeIn mb-20 px-4">
         <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-keppel-600 mb-4">Welcome 👋</h1>
         <p className="text-lg md:text-xl text-onyx-700 font-medium mb-8">
-          I&rsquo;m Henry – a storyteller, developer and lifelong learner. Below you
-          can preview my latest pieces and coding projects.
+          I&rsquo;m Henry – a storyteller and developer. Below I have some of my stories and some of my coding projects.
         </p>
       </section>
 
