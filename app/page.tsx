@@ -51,7 +51,7 @@ export default async function HomePage() {
       <section className="text-center max-w-4xl mx-auto animate-fadeIn mb-20 px-4">
         <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-keppel-600 mb-4">Welcome 👋</h1>
         <p className="text-lg md:text-xl text-onyx-700 font-medium mb-8">
-          I&rsquo;m Henry – a storyteller and developer. Below I have some of my stories and some of my coding projects.
+          I&rsquo;m Henry, a storyteller and developer. Below I have some of my stories and some of my coding projects.
         </p>
       </section>
 
@@ -77,6 +77,47 @@ export default async function HomePage() {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      { /* KUMO HACKATHON PAGE */}
+      <section className="mb-24 w-full max-w-7xl mx-auto px-4 animate-fadeIn">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold text-blue-700 dark:text-blue-400">Kumo Hackathon: College Matcher</h2>
+          <Link href="https://github.com/Henry-Santa/hackathon_kumo" target="_blank" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+            View Code
+          </Link>
+        </div>
+        <div className="grid gap-8 grid-cols-1 lg:grid-cols-2">
+          <div className="w-full aspect-video rounded-xl overflow-hidden border border-onyx-400 shadow-md bg-black">
+            <iframe
+              src="https://drive.google.com/file/d/1j7PChPqkmek5jQDhUcFfj1jiZMcxm9Xq/preview"
+              className="w-full h-full"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="flex flex-col justify-between">
+            <p className="text-onyx-700">
+              Demo video and source for my Kumo Hackathon submission, a college matching app with a FastAPI backend and React frontend.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="https://drive.google.com/file/d/1j7PChPqkmek5jQDhUcFfj1jiZMcxm9Xq/view?usp=sharing"
+                target="_blank"
+                className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+              >
+                Open Video
+              </Link>
+              <Link
+                href="https://github.com/Henry-Santa/hackathon_kumo"
+                target="_blank"
+                className="inline-flex items-center px-4 py-2 rounded-lg border border-onyx-400 hover:bg-white/60"
+              >
+                GitHub Repository
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
