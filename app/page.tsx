@@ -99,7 +99,7 @@ export default async function HomePage() {
           </div>
           <div className="flex flex-col justify-between">
             <p className="text-onyx-700">
-              Demo video and source for my Kumo Hackathon submission, a college matching app with a FastAPI backend and React frontend.
+              Demo video and source for my Kumo Hackathon submission, a college matching app with a FastAPI backend and React frontend!
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
